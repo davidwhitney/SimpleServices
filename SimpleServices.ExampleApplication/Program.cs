@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ServiceProcess;
 
 namespace SimpleServices.ExampleApplication
 {
-    public class Program
+    [RunInstaller(true)]
+    public class Program : ServiceInstaller
     {
         private static void Main(string[] args)
         {
@@ -18,7 +20,7 @@ namespace SimpleServices.ExampleApplication
                             }.ToArray,
                         installationSettings: (serviceInstaller, serviceProcessInstaller) =>
                             {
-                                serviceInstaller.ServiceName = "MyAwesomeService";
+                                serviceInstaller.ServiceName = "SimpleServices.ExampleApplication";
                                 serviceInstaller.StartType = ServiceStartMode.Manual;
                                 serviceProcessInstaller.Account = ServiceAccount.LocalService;
                             },

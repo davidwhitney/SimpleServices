@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="FakeIoCContainer.cs" />
     <Compile Include="FirstHostedThing.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Program.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SecondHostedThing.cs" />
   </ItemGroup>
