@@ -10,13 +10,13 @@
 		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
 		<tags>windows-service utility base-class installer installation InstallUtil</tags>
 		<language>en-US</language> 
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
+			<frameworkAssembly assemblyName="System.ServiceProcess"  />
+		</frameworkAssemblies>
 	</metadata> 	
 	<files>
 	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />
 	  <file src="SimpleServices\bin\Release\SimpleServices.pdb" target="lib\Net45\" />
 	</files>  
-	<frameworkAssemblies>
-		<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
-		<frameworkAssembly assemblyName="System.ServiceProcess"  />
-	</frameworkAssemblies>
 </package>
