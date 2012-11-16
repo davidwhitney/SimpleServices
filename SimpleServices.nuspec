@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata> 
+		<id>simpleservices</id> 
+		<version>1.0.0</version> 
+		<authors>David Whitney</authors> 
+		<owners>David Whitney</owners>
+		<description>A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil</description> 
+		<projectUrl>https://github.com/davidwhitney/SimpleServices</projectUrl>
+		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+		<tags>windows-service utility base-class installer installation InstallUtil</tags>
+		<language>en-US</language> 
+	</metadata> 	
+	<files>
+	  <file src="SimpleServices\bin\Release\JustGiving.Api.Sdk.dll" target="lib\Net45\" />
+	</files>  
+</package>
