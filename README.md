@@ -12,18 +12,55 @@ SimpleServices allows you to manually control service installation from code, ra
 - Support for logging frameworks
 - Built in App cache concurrent dictionary to share state between isolated hosted IWindowsServices.
 
-You need to implement the interface "IWindowsService":
+Getting started
+==============
+
+Simple services requires you do two things:
+
+ - Implement the interface IWindowsService on the entry point of your application logic class
+ - Use it's bootstrapping code to initilise your app.
+
+Example
+==============
+
+If you had a console app that looked like this:
+    
+    public static void Main_Original(string[] args)
+    {
+        Console.WriteLine("Hello world!");
+        Console.ReadLine();
+        Console.WriteLine("Goodbye world!");
+    }
+
+You would first need to extract out your login into a class that implemented IWindowsService.
+The interface looks like this:
 
     public interface IWindowsService
-    {
+    {       
+        ApplicationContext AppContext { get; set; }
         void Start(string[] args);
         void Stop();
-        ApplicationContext AppContext { get; set; }
     }
     
-And you're good to go.
+Once you did that, you'd have a class that looked like this:
 
-You application entry point will look something like this (taken from the provided executing example):
+    class MyService  : IWindowsService
+    {
+        public ApplicationContext AppContext { get; set; }
+        
+        public void Start(string[] args)
+        {
+            AppContext.Log("Hello world!");
+        }
+
+        public void Stop()
+        {
+            AppContext.Log("Goodbye world!");
+        }    
+    }
+
+Which is now ready to run as either a console app or a windows service.
+Now, you'd want to replace your application startup code in Main with this:
 
     [RunInstaller(true)]
     public class Program : ServiceInstaller
@@ -31,10 +68,7 @@ You application entry point will look something like this (taken from the provid
         private static void Main(string[] args)
         {
             new Service(args,
-                        new List<IWindowsService>
-                        {
-                            new MyService(),
-                        }.ToArray,
+                        new List<IWindowsService> { new MyService() }.ToArray,
                         installationSettings: (serviceInstaller, serviceProcessInstaller) =>
                         {
                             serviceInstaller.ServiceName = "SimpleServices.ExampleApplication";
@@ -44,22 +78,24 @@ You application entry point will look something like this (taken from the provid
                         configureContext: x => { x.Log = Console.WriteLine; })
                 .Host();
         }
-    
-        class MyService  : IWindowsService
-        {
-            public ApplicationContext AppContext { get; set; }
-            
-            public void Start(string[] args)
-            {
-                AppContext.Log("Hello world!");
-            }
-    
-            public void Stop()
-            {
-                AppContext.Log("Goodbye world!");
-            }
-    
-        }
     }
 
-Available on NuGet.
+And when you press F5, your application will behave just as it did before.
+
+
+But what do I get that's extra?
+==============
+
+Now that you've started using SimpleServices, you can install your application as a Windows service by calling:
+
+ - MyExeName.exe /i or MyExeName.exe /install
+
+and you can uninstall by calling: 
+
+ - MyExeName.exe /u or MyExeName.exe /uninstall
+
+Get it!
+==============
+
+- Pull / build this repository
+- From NuGe => PM> Install-Package simpleservices
