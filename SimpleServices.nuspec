@@ -12,6 +12,6 @@
 		<language>en-US</language> 
 	</metadata> 	
 	<files>
-	  <file src="SimpleServices\bin\Release\JustGiving.Api.Sdk.dll" target="lib\Net45\" />
+	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />
 	</files>  
 </package>

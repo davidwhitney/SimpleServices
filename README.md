@@ -1,7 +1,7 @@
 SimpleServices
 ==============
 
-A base class collection / pattern for simply building Windows services that run as services and console apps.
+A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil
 This allows you to build Windows services that also can be F5 run / debugged straight from Visual Studio with minimal effort.
 
 SimpleServices allows you to manually control service installation from code, rather than awkward designer files that do code-gen.
