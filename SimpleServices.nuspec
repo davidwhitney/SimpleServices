@@ -2,7 +2,7 @@
 <package>
 	<metadata> 
 		<id>simpleservices</id> 
-		<version>1.0.0</version> 
+		<version>1.0.1</version> 
 		<authors>David Whitney</authors> 
 		<owners>David Whitney</owners>
 		<description>A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil</description> 
@@ -12,7 +12,7 @@
 		<language>en-US</language> 
 		<frameworkAssemblies>
 			<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
-			<frameworkAssembly assemblyName="System.ServiceProcess"  />
+			<frameworkAssembly assemblyName="System.ServiceProcess" targetFramework="net40"  />
 		</frameworkAssemblies>
 	</metadata> 	
 	<files>
