@@ -15,4 +15,8 @@
 	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />
 	  <file src="SimpleServices\bin\Release\SimpleServices.pdb" target="lib\Net45\" />
 	</files>  
+	<frameworkAssemblies>
+		<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
+		<frameworkAssembly assemblyName="System.ServiceProcess"  />
+	</frameworkAssemblies>
 </package>
