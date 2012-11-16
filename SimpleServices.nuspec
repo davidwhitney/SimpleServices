@@ -13,5 +13,6 @@
 	</metadata> 	
 	<files>
 	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />
+	  <file src="SimpleServices\bin\Release\SimpleServices.pdb" target="lib\Net45\" />
 	</files>  
 </package>
