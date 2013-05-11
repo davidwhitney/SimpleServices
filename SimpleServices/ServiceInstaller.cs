@@ -1,8 +1,10 @@
 using System;
 using System.ComponentModel;
 using System.Configuration.Install;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Security.Principal;
 using System.ServiceProcess;
 
 // ReSharper disable ClassNeverInstantiated.Global
@@ -19,7 +21,7 @@ namespace SimpleServices
     public class ServiceInstaller : Installer
     {
         private static Action<ServiceInstaller> _configureAction = configuration => { };
-        
+
         public static void PerformAnyRequestedInstallations(string[] args, ApplicationContext context, string assemblyLocation = null)
         {
             if(assemblyLocation == null)
@@ -36,18 +38,21 @@ namespace SimpleServices
                 case "/install":
                 case "-i":
                 case "/i":
+                    EnsureElevated(args);
                     InstallAssemblyAsService(assemblyLocation);
                     break;
                 case "-uninstall":
                 case "/uninstall":
                 case "-u":
                 case "/u":
+                    EnsureElevated(args);
                     UninstallService(assemblyLocation);
                     break;
                 case "-tryinstall":
                 case "/tryinstall":
                 case "-ti":
                 case "/ti":
+                    EnsureElevated(args);
                     TryInstallAsService(assemblyLocation);
                     break;
             }
@@ -80,6 +85,39 @@ namespace SimpleServices
             Environment.Exit(0);
         }
 
+        private static void EnsureElevated(string[] args)
+        {
+            var pricipal = new WindowsPrincipal(WindowsIdentity.GetCurrent());
+            var hasAdministrativeRight = pricipal.IsInRole(WindowsBuiltInRole.Administrator);
+
+            if (hasAdministrativeRight)
+            {
+                return;
+            }
+
+            Console.WriteLine("Requesting elevated rights to perform operation...");
+
+            try
+            {
+                var processInfo = new ProcessStartInfo
+                    {
+                        Verb = "runas",
+                        FileName = Assembly.GetEntryAssembly().Location,
+                        UseShellExecute = true,
+                        Arguments = string.Join(" ", args)
+                    };
+
+                var p = Process.Start(processInfo);
+                p.WaitForExit();
+                
+                Environment.Exit(0);
+            }
+            catch (Win32Exception)
+            {
+                Console.WriteLine("Could not execute installation as administrator. Ensure you have the correct permissions.");
+                Environment.Exit(0);
+            }
+        }
 
         // Below = class instantiated by the framework installation classes
 
