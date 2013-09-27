@@ -2,7 +2,7 @@
 <package>
 	<metadata> 
 		<id>simpleservices</id> 
-		<version>1.6.0</version> 
+		<version>1.6.1</version> 
 		<authors>David Whitney</authors> 
 		<owners>David Whitney</owners>
 		<description>A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil</description> 
@@ -14,7 +14,7 @@
 			<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
 			<frameworkAssembly assemblyName="System.ServiceProcess" targetFramework="net40"  />
 		</frameworkAssemblies>
-		<releaseNotes>Fixed bugs in .net4 support</releaseNotes>
+		<releaseNotes>Added event source registration</releaseNotes>
 	</metadata> 	
 	<files>
 	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />

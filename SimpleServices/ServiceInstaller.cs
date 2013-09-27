@@ -137,7 +137,9 @@ namespace SimpleServices
 
             context.ConfigureInstall(_serviceInstaller, _serviceProcessInstaller);
 
-            Installers.AddRange(new Installer[] { _serviceProcessInstaller, _serviceInstaller });
+            var eventLogInstaller = new EventLogInstaller {Source = _serviceInstaller.ServiceName};
+
+            Installers.AddRange(new Installer[] { _serviceProcessInstaller, _serviceInstaller, eventLogInstaller });
         }
 
         public static bool IsServiceInstalled(string serviceName)
