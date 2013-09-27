@@ -2,7 +2,7 @@
 <package>
 	<metadata> 
 		<id>simpleservices</id> 
-		<version>1.6.1</version> 
+		<version>2.0.0</version> 
 		<authors>David Whitney</authors> 
 		<owners>David Whitney</owners>
 		<description>A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil</description> 
@@ -14,7 +14,7 @@
 			<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
 			<frameworkAssembly assemblyName="System.ServiceProcess" targetFramework="net40"  />
 		</frameworkAssemblies>
-		<releaseNotes>Added event source registration</releaseNotes>
+		<releaseNotes>Incremented to V.2, broke the API. BREAKING CHANGES, Renamed service installer to SimpleServiceApplication to fix naming collision with the .net framework causing confusing debugging problems. Clients must rename their Program.cs inheritance of ServiceInstaller to SimpleServiceApplication.</releaseNotes>
 	</metadata> 	
 	<files>
 	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />
