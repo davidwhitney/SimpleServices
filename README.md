@@ -1,6 +1,12 @@
 SimpleServices
 ==============
 
+# Breaking changes
+
+* V.2 - Clients must rename their Program.cs inheritance of ServiceInstaller to SimpleServiceApplication.
+
+#Intro
+
 A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil
 This allows you to build Windows services that also can be F5 run / debugged straight from Visual Studio with minimal effort.
 
@@ -12,16 +18,14 @@ SimpleServices allows you to manually control service installation from code, ra
 - Support for logging frameworks
 - Built in App cache concurrent dictionary to share state between isolated hosted IWindowsServices.
 
-Getting started
-==============
+# Getting started
 
 Simple services requires you do two things:
 
  - Implement the interface IWindowsService on the entry point of your application logic class
  - Use it's bootstrapping code to initilise your app.
 
-Example
-==============
+# Example
 
 If you had a console app that looked like this:
     
@@ -63,7 +67,7 @@ Which is now ready to run as either a console app or a windows service.
 Now, you'd want to replace your application startup code in Main with this:
 
     [RunInstaller(true)]
-    public class Program : ServiceInstaller
+    public class Program : SimpleServiceApplication
     {
         private static void Main(string[] args)
         {
@@ -83,8 +87,7 @@ Now, you'd want to replace your application startup code in Main with this:
 And when you press F5, your application will behave just as it did before.
 
 
-But what do I get that's extra?
-==============
+# But what do I get that's extra?
 
 Now that you've started using SimpleServices, you can install your application as a Windows service by calling:
 
@@ -94,8 +97,7 @@ and you can uninstall by calling:
 
  - MyExeName.exe /u or MyExeName.exe /uninstall
 
-Get it!
-==============
+# Get it!
 
 - Pull / build this repository
 - From NuGe => PM> Install-Package simpleservices

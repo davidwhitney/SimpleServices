@@ -43,7 +43,7 @@ namespace SimpleServices
         	_configureContext(_context);
 		    _context.Services = services;
 
-            ServiceInstaller.PerformAnyRequestedInstallations(_args, _context);
+            SimpleServiceApplication.PerformAnyRequestedInstallations(_args, _context);
             Execute(services, _args);
         }
 

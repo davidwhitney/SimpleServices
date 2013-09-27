@@ -18,9 +18,9 @@ namespace SimpleServices
     /// that can be invoked by the zero param ctor)
     /// </summary>
     [RunInstaller(true)]
-    public class ServiceInstaller : Installer
+    public class SimpleServiceApplication : Installer
     {
-        private static Action<ServiceInstaller> _configureAction = configuration => { };
+        private static Action<SimpleServiceApplication> _configureAction = configuration => { };
 
         public static void PerformAnyRequestedInstallations(string[] args, ApplicationContext context, string assemblyLocation = null)
         {
@@ -124,7 +124,7 @@ namespace SimpleServices
         private readonly ServiceProcessInstaller _serviceProcessInstaller = new ServiceProcessInstaller();
         private readonly System.ServiceProcess.ServiceInstaller _serviceInstaller = new System.ServiceProcess.ServiceInstaller();
 
-        public ServiceInstaller()
+        public SimpleServiceApplication()
         {
             _configureAction(this);
         }

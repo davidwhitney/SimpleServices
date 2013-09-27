@@ -6,7 +6,7 @@ using System.ServiceProcess;
 namespace SimpleServices.ExampleApplication
 {
     [RunInstaller(true)]
-    public class Program : ServiceInstaller
+    public class Program : SimpleServiceApplication
     {
         private static void Main(string[] args)
         {

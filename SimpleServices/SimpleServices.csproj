@@ -52,7 +52,7 @@
     <Compile Include="ServiceContainer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ServiceInstaller.cs">
+    <Compile Include="SimpleServiceApplication.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="WcfService.cs" />

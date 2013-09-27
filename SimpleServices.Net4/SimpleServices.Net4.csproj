@@ -43,28 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\SimpleServices\ApplicationContext.cs">
-      <Link>ApplicationContext</Link>
-    </Compile>
-    <Compile Include="..\SimpleServices\IIocContainer.cs">
-      <Link>IIocContainer</Link>
-    </Compile>
-    <Compile Include="..\SimpleServices\IWindowsService.cs">
-      <Link>IWindowsService</Link>
-    </Compile>
-    <Compile Include="..\SimpleServices\Service.cs">
-      <Link>Service</Link>
-    </Compile>
-    <Compile Include="..\SimpleServices\ServiceContainer.cs">
-      <Link>ServiceContainer</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\SimpleServices\ServiceInstaller.cs">
-      <Link>ServiceInstaller</Link>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="..\SimpleServices\WcfService.cs">
-      <Link>WcfService</Link>
+    <Compile Include="..\SimpleServices\*.cs">
+      <Link>%(FileName)</Link>
     </Compile>
     <Compile Include="..\SimpleServices\Properties\AssemblyInfo.cs">
       <Link>Properties\%(FileName)</Link>
