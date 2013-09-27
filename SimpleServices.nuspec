@@ -14,7 +14,7 @@
 			<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
 			<frameworkAssembly assemblyName="System.ServiceProcess" targetFramework="net40"  />
 		</frameworkAssemblies>
-		<releaseNotes>Added support for UAC</releaseNotes>
+		<releaseNotes>Fixed bugs in .net4 support</releaseNotes>
 	</metadata> 	
 	<files>
 	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />
