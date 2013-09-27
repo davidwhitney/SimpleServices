@@ -2,7 +2,7 @@
 <package>
 	<metadata> 
 		<id>simpleservices</id> 
-		<version>1.0.5</version> 
+		<version>1.6.0</version> 
 		<authors>David Whitney</authors> 
 		<owners>David Whitney</owners>
 		<description>A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil</description> 
@@ -19,5 +19,7 @@
 	<files>
 	  <file src="SimpleServices\bin\Release\SimpleServices.dll" target="lib\Net45\" />
 	  <file src="SimpleServices\bin\Release\SimpleServices.pdb" target="lib\Net45\" />
+	  <file src="SimpleServices.Net4\bin\Release\SimpleServices.dll" target="lib\Net40\" />
+	  <file src="SimpleServices.Net4\bin\Release\SimpleServices.pdb" target="lib\Net40\" />
 	</files>  
 </package>

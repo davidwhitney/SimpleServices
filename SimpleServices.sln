@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleServices", "SimpleSer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleServices.ExampleApplication", "SimpleServices.ExampleApplication\SimpleServices.ExampleApplication.csproj", "{A48AF8B7-02BE-48CA-BA80-BF84A962E15E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleServices.Net4", "SimpleServices.Net4\SimpleServices.Net4.csproj", "{3A25966E-D4D0-4FF4-973E-02EF76EBFEF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{A48AF8B7-02BE-48CA-BA80-BF84A962E15E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A48AF8B7-02BE-48CA-BA80-BF84A962E15E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A48AF8B7-02BE-48CA-BA80-BF84A962E15E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A25966E-D4D0-4FF4-973E-02EF76EBFEF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A25966E-D4D0-4FF4-973E-02EF76EBFEF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A25966E-D4D0-4FF4-973E-02EF76EBFEF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A25966E-D4D0-4FF4-973E-02EF76EBFEF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
