@@ -1,6 +1,8 @@
 SimpleServices
 ==============
 
+[![Build status](https://ci.appveyor.com/api/projects/status?id=sro2wbgp7naykoet)](https://ci.appveyor.com/project/simpleservices)
+
 # Breaking changes
 
 * V.2 - Clients must rename their Program.cs inheritance of ServiceInstaller to SimpleServiceApplication.
