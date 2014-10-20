@@ -25,7 +25,7 @@ namespace SimpleServices
         public Service(string[] args,
                                     Func<IWindowsService[]> createServices, 
                                     Action<ApplicationContext> configureContext = null,
-                                    Action<System.ServiceProcess.ServiceInstaller, ServiceProcessInstaller> installationSettings = null,
+                                    Action<ServiceInstaller, ServiceProcessInstaller> installationSettings = null,
                                     Func<IIocContainer> registerContainer = null)
 		{
             _args = args;
@@ -94,40 +94,34 @@ namespace SimpleServices
         }
 
         private void LaunchInteractiveServices(IEnumerable<IWindowsService> services, string[] args)
-		{
-			if (!Environment.UserInteractive)
-			{
-				return;
-			}
-
-			foreach(var service in services)
-			{
-				_context.Log("Starting service: " + service);
-			    service.AppContext = _context;
-				var service1 = service;
-				var task = new Task(() => service1.Start(args));
-				task.Start();
-			}
-
-	_context.Log("Listening..");
-	
-	Console.CancelKeyPress += (sender, eventArgs) => ShutdownServices(windowsServices);
-	while (true) {Console.ReadLine();}
+        {
+            if (!Environment.UserInteractive)
+            {
+                return;
+            }
 
             foreach (var service in services)
             {
-                _context.Log("Stopping service: " + service);
+                _context.Log("Starting service: " + service);
+                service.AppContext = _context;
                 var service1 = service;
-                service1.Stop();
+                var task = new Task(() => service1.Start(args));
+                task.Start();
             }
-	}
-	
-	private void ShutdownServices(IEnumerable<IWindowsService> services)
+
+            _context.Log("Listening..");
+
+            Console.CancelKeyPress += (sender, eventArgs) => ShutdownServices(services);
+            Console.ReadLine();
+            
+            ShutdownServices(services);
+        }
+
+        private void ShutdownServices(IEnumerable<IWindowsService> services)
         {
             foreach (var service in services)
             {
                 _context.Log("Stopping service: " + service);
-                service.AppContext = _context;
                 var service1 = service;
                 service1.Stop();
             }
