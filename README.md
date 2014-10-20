@@ -1,7 +1,7 @@
 SimpleServices
 ==============
 
-[![Build status](https://ci.appveyor.com/api/projects/status?id=sro2wbgp7naykoet)](https://ci.appveyor.com/project/simpleservices)
+[![Build status](https://ci.appveyor.com/api/projects/status/sro2wbgp7naykoet?svg=true)](https://ci.appveyor.com/project/DavidWhitney/simpleservices)
 
 #Intro
 
@@ -26,7 +26,7 @@ Simple services requires you do two things:
 # Example
 
 If you had a console app that looked like this:
-    
+
     public static void Main_Original(string[] args)
     {
         Console.WriteLine("Hello world!");
@@ -38,18 +38,18 @@ You would first need to extract out your login into a class that implemented IWi
 The interface looks like this:
 
     public interface IWindowsService
-    {       
+    {
         ApplicationContext AppContext { get; set; }
         void Start(string[] args);
         void Stop();
     }
-    
+
 Once you did that, you'd have a class that looked like this:
 
     class MyService  : IWindowsService
     {
         public ApplicationContext AppContext { get; set; }
-        
+
         public void Start(string[] args)
         {
             AppContext.Log("Hello world!");
@@ -58,7 +58,7 @@ Once you did that, you'd have a class that looked like this:
         public void Stop()
         {
             AppContext.Log("Goodbye world!");
-        }    
+        }
     }
 
 Which is now ready to run as either a console app or a windows service.
@@ -91,7 +91,7 @@ Now that you've started using SimpleServices, you can install your application a
 
  - MyExeName.exe /i or MyExeName.exe /install
 
-and you can uninstall by calling: 
+and you can uninstall by calling:
 
  - MyExeName.exe /u or MyExeName.exe /uninstall
 
