@@ -2,9 +2,9 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("SimpleServices")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SimpleServices")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("David Whitney")]
 [assembly: AssemblyProduct("SimpleServices")]
 [assembly: AssemblyCopyright("Copyright ©David Whitney")]
 [assembly: AssemblyTrademark("")]

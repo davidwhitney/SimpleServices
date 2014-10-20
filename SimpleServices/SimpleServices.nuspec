@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<metadata> 
+		<id>$id$</id>
+		<version>$version$</version>
+		<authors>David Whitney</authors>
+		<owners>David Whitney</owners>
+		<description>A base class for self-installing Windows Services with debugging hooks to run as console apps without requiring InstallUtil</description> 
+		<projectUrl>https://github.com/davidwhitney/SimpleServices</projectUrl>
+		<licenseUrl>http://www.opensource.org/licenses/MIT</licenseUrl>
+		<tags>windows-service utility base-class installer installation InstallUtil</tags>
+		<language>en-US</language> 
+		<frameworkAssemblies>
+			<frameworkAssembly assemblyName="System.Configuration.Install" targetFramework="net40" />
+			<frameworkAssembly assemblyName="System.ServiceProcess" targetFramework="net40"  />
+		</frameworkAssemblies>
+	</metadata> 	
+	<files>
+	  <file src="bin\Release\SimpleServices.pdb" target="lib\Net45\" />
+	  <file src="..\SimpleServices.Net4\bin\Release\SimpleServices.dll" target="lib\Net40\" />
+	  <file src="..\SimpleServices.Net4\bin\Release\SimpleServices.pdb" target="lib\Net40\" />
+	</files>  
+</package>
