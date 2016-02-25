@@ -12,7 +12,7 @@ namespace SimpleServices
 {
     /// <summary>
     /// Instantiated by the framework as part of installation.
-    /// Weird looking implementation is required to work around the way the famework
+    /// Weird looking implementation is required to work around the way the framework
     /// service installation class works (it finds a class that inherits Installer and has a RunInstaller(true) attrib
     /// creates an instance of it and executes it. To enable configuration, we need to punch an Action shaped hole in the side
     /// that can be invoked by the zero param ctor)
@@ -29,33 +29,48 @@ namespace SimpleServices
                 assemblyLocation = Assembly.GetEntryAssembly().Location;
             }
 
+            var behavior = GetInstallBehavior(args);
+
             var parameter = string.Concat(args);
             _configureAction = x => x.ConfigureServiceInstall(context);
 
-            switch (parameter)
+            switch (behavior)
             {
-                case "-install":
-                case "/install":
-                case "-i":
-                case "/i":
+                case InstallBehavior.Install:
                     EnsureElevated(args);
                     InstallAssemblyAsService(assemblyLocation);
                     break;
-                case "-uninstall":
-                case "/uninstall":
-                case "-u":
-                case "/u":
+                case InstallBehavior.Uninstall:
                     EnsureElevated(args);
                     UninstallService(assemblyLocation);
                     break;
-                case "-tryinstall":
-                case "/tryinstall":
-                case "-ti":
-                case "/ti":
+                case InstallBehavior.TryInstall:
                     EnsureElevated(args);
                     TryInstallAsService(assemblyLocation);
                     break;
             }
+        }
+
+        private static InstallBehavior GetInstallBehavior(string[] args) {
+            
+            var installPatterns = new[] { "-install", "/install", "-i", "/i" };
+            if (installPatterns.Any(pattern => args.Contains(pattern))) {
+                return InstallBehavior.Install;
+            }
+
+            var uninstallPatterns = new[] { "-uninstall", "/uninstall", "-u", "/u" };
+            if (uninstallPatterns.Any(pattern => args.Contains(pattern)))
+            {
+                return InstallBehavior.Uninstall;
+            }
+
+            var tryInstallPatterns = new[] { "-tryinstall", "/tryinstall", "-ti", "/ti" };
+            if (tryInstallPatterns.Any(pattern => args.Contains(pattern)))
+            {
+                return InstallBehavior.TryInstall;
+            }
+
+            return InstallBehavior.Undefined;
         }
 
         private static void TryInstallAsService(string assemblyLocation)
